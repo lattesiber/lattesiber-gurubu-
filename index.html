@@ -1,70 +1,157 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>web site kapalı</title>
-  <meta name="description" content="Bu web sitesi yalnızca test amaçlı yapılmıştır." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LATTESİBER Gurubu</title>
   <style>
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-
     body {
       margin: 0;
-      display: grid;
-      place-items: center;
-      background: #ff0033; /* kırmızı arkaplan */
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
-      color: #fff;
-      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: url("img.png") no-repeat center center fixed; /* Arka plan resmi */
+      background-size: cover;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    main {
-      text-align: center;
-      padding: 3rem 2rem;
-      border-radius: 1.25rem;
-      background: rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      max-width: 720px;
-      margin: 1rem;
+    /* Kırmızı şeffaf katman */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top left, rgba(255,0,0,0.3), transparent 50%),
+                  radial-gradient(circle at top right, rgba(255,0,0,0.3), transparent 50%),
+                  radial-gradient(circle at bottom left, rgba(255,0,0,0.3), transparent 50%),
+                  radial-gradient(circle at bottom right, rgba(255,0,0,0.3), transparent 50%);
+      z-index: 0;
+      pointer-events: none; /* Tıklamaları engellemez */
+    }
+
+    .logo, .kutucuk, .buyuk-kutu, .footer-kutu {
+      position: relative;
+      z-index: 1; /* Yazılar ve kutular üstte kalır */
+    }
+
+    .logo {
+      margin-top: 50px;
+    }
+
+    .logo img {
+      width: 200px;
     }
 
     h1 {
-      margin: 0 0 .5rem;
-      font-size: clamp(1.4rem, 4vw, 2.2rem);
-      line-height: 1.2;
-      font-weight: 800;
+      font-size: 2.5rem;
+      margin-top: 20px;
     }
 
     p {
-      margin: .25rem 0 0;
-      opacity: .9;
-      font-size: clamp(.95rem, 2.2vw, 1.05rem);
+      font-size: 1.3rem;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: .6rem 1.2rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,.2);
-      border: 1px solid rgba(255,255,255,.35);
-      font-size: 1rem;
-      color: #fff;
-      text-decoration: none;
-      transition: background .3s;
+    .kutucuk {
+      background-color: white;
+      color: red;
+      padding: 20px;
+      margin: 40px auto;
+      width: 60%;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-size: 1.5rem;
+      font-weight: bold;
     }
-    .btn:hover {
-      background: rgba(255,255,255,.35);
+
+    .buyuk-kutu {
+      background-color: rgba(255, 255, 255, 0.2); /* Şeffaf kutu */
+      color: white;
+      padding: 40px;
+      margin: 40px auto;
+      width: 80%;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      font-size: 1.8rem;
+    }
+
+    .buyuk-kutu h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      text-decoration: underline;
+    }
+
+    .buyuk-kutu p {
+      font-size: 1.4rem;
+    }
+
+    .buton {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: white;
+      color: red;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+
+    .buton:hover {
+      background: #f0f0f0;
+      transform: scale(1.05);
+    }
+
+    .footer-kutu {
+      background-color: rgba(0, 0, 0, 0.4); /* Daha koyu şeffaf */
+      color: #fff;
+      padding: 30px;
+      margin-top: 50px;
+      width: 100%;
+      border-radius: 0;
+      box-shadow: inset 0 4px 15px rgba(0,0,0,0.5);
+      font-size: 1.2rem;
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>sahibi:lattesiber scratch programcısı bu web siteyi geliştirme aşamsına sokmuştur.</h1>
-    <p> © 2025 TÜM HAKLARI SAKLIDIR</p>
-  </main>
+  <div class="logo">
+    <img src="lattesiber-gurubu-png.png" alt="LATTESİBER Gurubu Logo">
+    <h1>LATTESİBER Gurubu</h1>
+    <p>scratch stüdyo Web Sitesi</p>
+  </div>
+
+  <div class="kutucuk">
+    LATTESİBER gurubu tamda burada!
+  </div>
+
+  <div class="buyuk-kutu">
+    <h2>:idarecilerimiz:</h2>
+    <p>Eymenn608</p>
+    <p>egecan487</p>
+    <p>EmirSeyfOS</p>
+    <p>ZDwindows</p>
+    <p>umutbabapiro201316</p>
+    <p>NormalUsername999</p>
+    <p>CaylakOyunda</p>
+    <p>Producer40</p>
+  </div>
+
+  <div class="buyuk-kutu">
+    <h2>Scratch stüdyomuza takip edin veya idareci olun!</h2>
+    <p>(scratch hesabı lazım)</p>
+    <a href="https://scratch.mit.edu/studios/50818828" target="_blank" class="buton">
+      takip et veya idareci ol!
+    </a>
+  </div>
+
+  <div class="footer-kutu">
+    Sahibi: <b>lattesiber scratch programcısı</b> — Bu website <b>Visual Studio Code</b> ile yapıldı ve domain <b>GitHub Pages</b> olarak alındı.
+    ©2025 TÜM HAKALRI SAKLIDIR
+  </div>
 </body>
 </html>
+
